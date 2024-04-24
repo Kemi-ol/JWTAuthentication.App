@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Authentication.Model;
 using Authentication.Repositories;
 using Authentication.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Authentication.Controllers
 {
+    [Authorize]
     [Route("api/employee")]
     [ApiController]
     public class EmployeesController : ControllerBase
