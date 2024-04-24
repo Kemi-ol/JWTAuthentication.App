@@ -67,7 +67,7 @@ namespace Authentication.Controllers
             return Ok(updatedEmployee);
         }
 
-        ,
+        
 
         //Delete an employee
         [HttpDelete("delete/{id}")]
