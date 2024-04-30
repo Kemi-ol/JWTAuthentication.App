@@ -43,11 +43,6 @@ namespace Authentication.Repositories
     );
 
 
-
-
-
-
-
             modelBuilder.Entity<Employee>(entity =>
             {
                 entity.ToTable("Employee");

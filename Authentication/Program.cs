@@ -95,6 +95,27 @@ builder.Services.AddSwaggerGen(options =>
     string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     options.IncludeXmlComments(xmlPath);
+
+    options.AddSecurityDefinition("EmployeeApiBearerAuth", new()
+    {
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        Description = "Input a valid token to access this API"
+    });
+
+    options.AddSecurityRequirement(new()
+    {
+        {
+            new()
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "EmployeeApiBearerAuth"
+                } },
+                new List<string>()
+            }
+    });
 });
 
 

@@ -17,7 +17,7 @@ namespace Authentication.Controllers
    
     [Route("api/v{version:apiVersion}/employee")]
     [ApiController]
-   // [Authorize]
+   [Authorize]
     [ApiVersion("1.0")]
     [ApiVersion("2.0")]
     public class EmployeesController : ControllerBase
