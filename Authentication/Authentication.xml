@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Authentication</name>
+    </assembly>
+    <members>
+        <member name="M:Authentication.Controllers.EmployeesController.GetEmployees">
+            <summary>
+            Get all employees
+            </summary>
+            <returns> All Employees</returns>
+            <response code = "200"> Returns all employees </response>
+        </member>
+        <member name="M:Authentication.Controllers.EmployeesController.GetEmployee(System.Int32)">
+            <summary>
+            Get a specific employee by id
+            </summary>
+            <param name="id">The id of the Employee</param>
+            <returns>An Employee for a specific id</returns>
+        </member>
+        <member name="M:Authentication.Controllers.EmployeesController.AddnewEmployee(Authentication.Model.Employee)">
+            <summary>
+            Add an Employee
+            </summary>
+            <param name="employee">The details of the employee</param>
+            <returns>The added employee</returns>
+        </member>
+        <member name="M:Authentication.Controllers.EmployeesController.UpdateEmployee(System.Int32,System.Int16)">
+            <summary>
+            Update Vacatiion hours of an employee
+            </summary>
+            <param name="id">The id of the employee</param>
+            <param name="vacationHours">The new number of hours</param>
+            <returns>The updated Employee details</returns>
+        </member>
+        <member name="M:Authentication.Controllers.EmployeesController.DeleteEmployee(System.Int32)">
+            <summary>
+            Delete An Employee
+            </summary>
+            <param name="id">The id of the employee</param>
+            <returns>status</returns>
+        </member>
+        <member name="T:Authentication.Migrations.jwt_authorisation">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.jwt_authorisation.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.jwt_authorisation.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.jwt_authorisation.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Authentication.Migrations.employeedetails">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.employeedetails.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.employeedetails.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.employeedetails.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Authentication.Migrations.userinfodetails">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.userinfodetails.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.userinfodetails.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.userinfodetails.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Authentication.Migrations.databaseclean">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.databaseclean.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.databaseclean.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.databaseclean.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Authentication.Migrations.updateemployeetable">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.updateemployeetable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.updateemployeetable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.updateemployeetable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Authentication.Migrations.updateuserinfo">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.updateuserinfo.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.updateuserinfo.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Migrations.updateuserinfo.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Authentication.Model.Employee">
+            <summary>
+            Represents Employee Details.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.EmployeeID">
+            <summary>
+            Gets or sets the employee ID.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.NationalIDNumber">
+            <summary>
+            Gets or sets the national ID number of the employee.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.EmployeeName">
+            <summary>
+            Gets or sets the name of the employee.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.LoginID">
+            <summary>
+            Gets or sets the login ID of the employee.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.JobTitle">
+            <summary>
+            Gets or sets the job title of the employee.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.BirthDate">
+            <summary>
+            Gets or sets the birth date of the employee.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.MaritalStatus">
+            <summary>
+            Gets or sets the marital status of the employee.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.Gender">
+            <summary>
+            Gets or sets the gender of the employee.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.HireDate">
+            <summary>
+            Gets or sets the hire date of the employee.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.VacationHours">
+            <summary>
+            Gets or sets the number of vacation hours for the employee.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.SickLeaveHours">
+            <summary>
+            Gets or sets the number of sick leave hours for the employee.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.RowGuid">
+            <summary>
+            Gets or sets the row GUID of the employee.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.Employee.ModifiedDate">
+            <summary>
+            Gets or sets the last modified date of the employee.
+            </summary>
+        </member>
+        <member name="T:Authentication.Model.UserInfo">
+            <summary>
+            Represents user information.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.UserInfo.UserId">
+            <summary>
+            Gets or sets the user ID.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.UserInfo.DisplayName">
+            <summary>
+            Gets or sets the display name of the user.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.UserInfo.UserName">
+            <summary>
+            Gets or sets the username of the user.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.UserInfo.Email">
+            <summary>
+            Gets or sets the email address of the user.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.UserInfo.Password">
+            <summary>
+            Gets or sets the password of the user.
+            </summary>
+        </member>
+        <member name="P:Authentication.Model.UserInfo.CreatedDate">
+            <summary>
+            Gets or sets the date when the user was created.
+            </summary>
+        </member>
+    </members>
+</doc>
