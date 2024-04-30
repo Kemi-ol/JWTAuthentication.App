@@ -3,9 +3,12 @@ using Authentication.Repositories;
 using Authentication.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Configuration;
 using System.Reflection;
 using System.Text;
@@ -56,22 +59,38 @@ builder.Services.AddApiVersioning(options => {
     options.ReportApiVersions = true;
     options.AssumeDefaultVersionWhenUnspecified = true;
     options.DefaultApiVersion = new ApiVersion(1, 0);
-    options.ApiVersionReader = ApiVersionReader.Combine(
-        //Query Strying type
-        new QueryStringApiVersionReader("api-version"),
-        //Request Heardes Type
-        new HeaderApiVersionReader("Accept-Version"),
-        //Media Type
-        new MediaTypeApiVersionReader("api-version"));
+    
 });
 
+builder.Services.AddVersionedApiExplorer(options =>
+{
+    // Substitute API version in URLs
+    options.SubstituteApiVersionInUrl = true;
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var apiVersionDescriptionProvider = builder.Services.BuildServiceProvider()   
+.GetRequiredService<IApiVersionDescriptionProvider> ();
+
+
 builder.Services.AddSwaggerGen(options =>
 {
+    var provider = builder.Services.BuildServiceProvider().GetRequiredService<IApiVersionDescriptionProvider>();
+    foreach (var description in provider.ApiVersionDescriptions)
+    {
+        options.SwaggerDoc(
+            description.GroupName,
+            new OpenApiInfo
+            {
+                Title = "Employees API",
+                Version = description.ApiVersion.ToString(),
+                Description = "Get all your Employee details through us"
+            });
+    }
+
     // Configure XML comments path
     string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -86,7 +105,16 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+            var descriptions = app.Services.GetRequiredService<IApiVersionDescriptionProvider>().ApiVersionDescriptions;
+        foreach ( var description in descriptions)
+        {
+            options.SwaggerEndpoint(
+                $"/swagger/{description.GroupName}/swagger.json",
+                description.GroupName.ToUpperInvariant());
+        }
+    });
 }
 
 app.UseHttpsRedirection();
@@ -95,6 +123,12 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
+
+
 
 app.Run();
+    
